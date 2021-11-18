@@ -1,3 +1,5 @@
+import { RegisterService } from './register.service';
+import { User } from './user.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,7 +8,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  constructor() {}
 
-  ngOnInit(): void {}
+  user: User = {
+    email: '',
+    name: '',
+    password: '',
+  };
+
+  constructor(private registerService: RegisterService) {}
+
+  ngOnInit(): void {
+    console.log(this.user);
+  }
+
+  createUser() {
+    console.log("Clicou");
+    return this.registerService.create(this.user).subscribe(() => {
+      console.log("Usuario criado!")
+    })
+  }
 }

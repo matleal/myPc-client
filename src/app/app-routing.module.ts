@@ -10,7 +10,7 @@ const routes: Routes = [
   ]),
   { path: 'register', loadChildren: () => import('./register/register.module').then((m) => m.RegisterModule) },
   // Fallback when no prior route is matched
-  { path: '**', redirectTo: 'tabs/home', pathMatch: 'full' },
+  { path: '**', redirectTo: 'tabs/feed', pathMatch: 'full' },
 ];
 
 @NgModule({

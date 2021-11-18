@@ -6,29 +6,25 @@
 
 <ion-content>
   <form>
-    <ion-item lines="full">
-      <ion-label position="floating">First name</ion-label>
-      <ion-input type="text" required></ion-input>
-    </ion-item>
-
-    <ion-item lines="full">
-      <ion-label position="floating">Last name</ion-label>
-      <ion-input type="text" required></ion-input>
-    </ion-item>
 
     <ion-item lines="full">
       <ion-label position="floating">Email</ion-label>
-      <ion-input type="text" required></ion-input>
+      <ion-input type="text" required [(ngModel)]="user.email" name="email"></ion-input>
     </ion-item>
 
     <ion-item lines="full">
-      <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" required></ion-input>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input type="text" required [(ngModel)]="user.name" name="name"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input type="text" required [(ngModel)]="user.password" name="password"></ion-input>
     </ion-item>
 
     <ion-row>
       <ion-col>
-        <ion-button type="submit" color="secondary" expand="block">Sign Up</ion-button>
+        <ion-button type="submit" color="secondary" expand="block" (click)="createUser()">Sign Up</ion-button>
       </ion-col>
     </ion-row>
   </form>

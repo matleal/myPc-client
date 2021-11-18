@@ -10,7 +10,6 @@ import { IonicModule } from '@ionic/angular';
 import { environment } from '@env/environment';
 import { RouteReusableStrategy, ApiPrefixInterceptor, ErrorHandlerInterceptor, SharedModule } from '@shared';
 import { AuthModule } from '@app/auth';
-import { HomeModule } from './home/home.module';
 import { ShellModule } from './shell/shell.module';
 import { SettingsModule } from './settings/settings.module';
 import { AppComponent } from './app.component';
@@ -27,7 +26,6 @@ import { AppRoutingModule } from './app-routing.module';
     IonicModule.forRoot(),
     SharedModule,
     ShellModule,
-    HomeModule,
     SettingsModule,
     AuthModule,
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
