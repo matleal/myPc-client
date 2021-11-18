@@ -4,5 +4,27 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-button (click)="createProduct()">Criar Produto</ion-button>
+  <form>
+    <ion-item lines="full">
+      <ion-label position="floating">Produto</ion-label>
+      <ion-input type="text" required [(ngModel)]="product.title" name="title"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Categoria</ion-label>
+      <ion-input type="text" required [(ngModel)]="product.category" name="category"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Descrição</ion-label>
+      <ion-input type="text" required [(ngModel)]="product.description" name="description"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Preço</ion-label>
+      <ion-input type="price" required [(ngModel)]="product.price" name="price"></ion-input>
+    </ion-item>
+
+    <ion-button (click)="createProduct()">Criar Produto</ion-button>
+  </form>
 </ion-content>
