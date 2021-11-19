@@ -1,31 +1,32 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title color="primary">Register</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>Register</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <form>
+  <ion-card>
+    <form>
+      <ion-item lines="full">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="text" required [(ngModel)]="user.email" name="email"></ion-input>
+      </ion-item>
 
-    <ion-item lines="full">
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="text" required [(ngModel)]="user.email" name="email"></ion-input>
-    </ion-item>
+      <ion-item lines="full">
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input type="text" required [(ngModel)]="user.name" name="name"></ion-input>
+      </ion-item>
 
-    <ion-item lines="full">
-      <ion-label position="floating">Nome</ion-label>
-      <ion-input type="text" required [(ngModel)]="user.name" name="name"></ion-input>
-    </ion-item>
+      <ion-item lines="full">
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input type="text" required [(ngModel)]="user.password" name="password"></ion-input>
+      </ion-item>
 
-    <ion-item lines="full">
-      <ion-label position="floating">Senha</ion-label>
-      <ion-input type="text" required [(ngModel)]="user.password" name="password"></ion-input>
-    </ion-item>
-
-    <ion-row>
-      <ion-col>
-        <ion-button type="submit" color="secondary" expand="block" (click)="createUser()">Sign Up</ion-button>
-      </ion-col>
-    </ion-row>
-  </form>
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="secondary" expand="block" (click)="createUser()">Sign Up</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-card>
 </ion-content>

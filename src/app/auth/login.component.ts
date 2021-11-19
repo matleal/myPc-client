@@ -60,6 +60,7 @@ export class LoginComponent implements OnInit {
         (error) => {
           log.debug(`Login error: ${error}`);
           this.error = error;
+          this.router.navigate(['/login'], { replaceUrl: true });
         }
       );
   }

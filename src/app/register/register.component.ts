@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-
   user: User = {
     email: '',
     name: '',
@@ -22,9 +21,9 @@ export class RegisterComponent implements OnInit {
   }
 
   createUser() {
-    console.log("Clicou");
+    console.log('Clicou');
     return this.registerService.create(this.user).subscribe(() => {
-      console.log("Usuario criado!")
-    })
+      console.log('Usuario criado!');
+    });
   }
 }
