@@ -6,17 +6,16 @@
 
 <ion-grid>
   <ion-row>
-    <ion-col>
-      <ion-card start>
-        <ion-card-header>
-          <img class="product-img" src="assets/ngx-rocket-logo.png" />
-          <ion-card-title>Placa de video</ion-card-title>
-          <h2>R$ 500,00</h2>
-        </ion-card-header>
-        <ion-card-content>
-          Produto em otimo estado, ainda na caixa. Estou vendendo pois comprei outra.
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
+    <ion-card *ngFor="let product of products">
+      <ion-card-header>
+        <img class="product-img" src="assets/ngx-rocket-logo.png" />
+        <ion-card-title>{{ product.title }}</ion-card-title>
+        <ion-card-subtitle>{{ product.category }}</ion-card-subtitle>
+        <h2>R${{ product.price }}</h2>
+      </ion-card-header>
+      <ion-card-content>
+        {{ product.description }}
+      </ion-card-content>
+    </ion-card>
   </ion-row>
 </ion-grid>

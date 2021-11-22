@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ProductService {
-  baseUrl = 'http://localhost:3000/v1/products';
+  baseUrlToCreate = 'http://localhost:3000/v1/products';
+  baseUrlToRead = 'http://localhost:3000/v1/products/all';
 
   constructor(private toastController: ToastController, private http: HttpClient) {}
 
@@ -20,6 +21,10 @@ export class ProductService {
   }
 
   create(product: Product): Observable<Product> {
-    return this.http.post<Product>(this.baseUrl, product);
+    return this.http.post<Product>(this.baseUrlToCreate, product);
+  }
+
+  read(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.baseUrlToRead);
   }
 }

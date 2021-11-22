@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { User } from '../register/user.model';
 
 import { Credentials, CredentialsService } from './credentials.service';
 
@@ -17,7 +19,15 @@ export interface LoginContext {
   providedIn: 'root',
 })
 export class AuthenticationService {
-  constructor(private credentialsService: CredentialsService) {}
+  baseUrl = 'http://localhost:3000/v1/auth/login';
+
+  user: User = {
+    email: '',
+    password: '',
+    name: '',
+  };
+
+  constructor(private credentialsService: CredentialsService, private http: HttpClient) {}
 
   /**
    * Authenticates the user.
@@ -26,11 +36,40 @@ export class AuthenticationService {
    */
   login(context: LoginContext): Observable<Credentials> {
     // Replace by proper authentication call
-    const data = {
-      username: context.username,
-      token: '123456',
+
+    console.log(context);
+
+    this.user.email = context.username;
+    this.user.password = context.password;
+
+    let data = {
+      username: '',
+      token: '',
     };
-    this.credentialsService.setCredentials(data, context.remember);
+
+    this.http
+      .post(this.baseUrl, this.user)
+      .toPromise()
+      .then(
+        (res) => {
+          console.log(res);
+          const token = res['token'];
+          const user = res['user'];
+          console.log(res['token']);
+          console.log(res['user']);
+
+          data.username = user.email;
+          data.token = token.accessToken;
+
+          this.credentialsService.setCredentials(data, context.remember);
+          console.log(this.credentialsService.isAuthenticated());
+          console.log(this.credentialsService.credentials);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+
     return of(data);
   }
 
