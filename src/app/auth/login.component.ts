@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
         },
         (error) => {
           log.debug(`Login error: ${error}`);
-          this.error = error;
+          this.error = 'Email ou senha estão incorretos';
           this.router.navigate(['/login'], { replaceUrl: true });
         }
       );
