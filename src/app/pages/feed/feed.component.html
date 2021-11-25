@@ -9,7 +9,7 @@
       <ion-col  sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let product of products">
         <ion-card>
           <ion-card-header>
-            <img class="product-img" src="assets/ngx-rocket-logo.png" />
+            <img class="product-img" [src]=product.image />
             <ion-card-title>{{ product.title }}</ion-card-title>
             <ion-card-subtitle>{{ product.category }}</ion-card-subtitle>
             <h2>R${{ product.price }}</h2>

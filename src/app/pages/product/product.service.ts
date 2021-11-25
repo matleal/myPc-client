@@ -8,17 +8,20 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ProductService {
+  baseUrl = 'http://localhost:3000/v1'
   baseUrlToCreate = 'http://localhost:3000/v1/products';
   baseUrlToRead = 'http://localhost:3000/v1/products/all';
-  baseUrlToUpload = 'http://localhost:3000/v1/products/upload';
 
   constructor(private toastController: ToastController, private http: HttpClient) {}
 
-  showMessage(msg: string): void {
-    this.toastController.create({
+  async showMessage(msg: string){
+    const toast = await this.toastController.create({
       message: msg,
       duration: 3000,
+      color: 'primary',
     });
+
+    await toast.present();
   }
 
   create(product: Product, selectedFile: File): Observable<any> {
@@ -33,5 +36,9 @@ export class ProductService {
 
   read(): Observable<Product[]> {
     return this.http.get<Product[]>(this.baseUrlToRead);
+  }
+
+  readImage(id: string){
+    return this.http.get(`${this.baseUrl}/${id}`);
   }
 }

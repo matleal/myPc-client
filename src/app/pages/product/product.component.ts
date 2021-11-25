@@ -29,8 +29,8 @@ export class ProductComponent implements OnInit {
   createProduct() {
     this.productService.create(this.product, this.selectedFile).subscribe(() => {
       console.log('produto criado');
+      this.productService.showMessage('Anuncio criado com sucesso!');
     });
 
-    // this.productService.showMessage('Anuncio criado com sucesso!');
   }
 }
