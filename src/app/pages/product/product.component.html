@@ -27,7 +27,7 @@
       </ion-item>
 
       <ion-item>
-        <ion-input type="file"></ion-input>
+        <ion-input type="file" (change)="onFileSelected($event)"></ion-input>
       </ion-item>
 
       <ion-button (click)="createProduct()">Criar Produto</ion-button>

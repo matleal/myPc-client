@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 export class ProductService {
   baseUrlToCreate = 'http://localhost:3000/v1/products';
   baseUrlToRead = 'http://localhost:3000/v1/products/all';
+  baseUrlToUpload = 'http://localhost:3000/v1/products/upload';
 
   constructor(private toastController: ToastController, private http: HttpClient) {}
 
@@ -20,8 +21,14 @@ export class ProductService {
     });
   }
 
-  create(product: Product): Observable<Product> {
-    return this.http.post<Product>(this.baseUrlToCreate, product);
+  create(product: Product, selectedFile: File): Observable<any> {
+    const fd = new FormData();
+    fd.append('image', selectedFile, selectedFile.name);
+    fd.append('title', product.title);
+    fd.append('description', product.description);
+    fd.append('category', product.category);
+    fd.append('price', product.price);
+    return this.http.post<any>(this.baseUrlToCreate, fd);
   }
 
   read(): Observable<Product[]> {

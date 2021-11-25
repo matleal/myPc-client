@@ -12,17 +12,25 @@ export class ProductComponent implements OnInit {
     title: '',
     description: '',
     category: '',
-    price: 0,
+    price: '',
   };
+
+  selectedFile: any;
 
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {}
 
+  onFileSelected(event: any) {
+    this.selectedFile = <File>event.target.files[0];
+    console.log(this.selectedFile);
+  }
+
   createProduct() {
-    this.productService.create(this.product).subscribe(() => {
+    this.productService.create(this.product, this.selectedFile).subscribe(() => {
       console.log('produto criado');
     });
+
     // this.productService.showMessage('Anuncio criado com sucesso!');
   }
 }
