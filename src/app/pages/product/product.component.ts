@@ -9,6 +9,7 @@ import { Product } from './product.model';
 })
 export class ProductComponent implements OnInit {
   product: Product = {
+    _id: '',
     title: '',
     description: '',
     category: '',

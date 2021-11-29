@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class ProductService {
   baseUrl = 'http://localhost:3000/v1'
-  baseUrlToCreate = 'http://localhost:3000/v1/products';
+  baseUrlToProduct = 'http://localhost:3000/v1/products';
   baseUrlToRead = 'http://localhost:3000/v1/products/all';
 
   constructor(private toastController: ToastController, private http: HttpClient) {}
@@ -31,14 +31,18 @@ export class ProductService {
     fd.append('description', product.description);
     fd.append('category', product.category);
     fd.append('price', product.price);
-    return this.http.post<any>(this.baseUrlToCreate, fd);
+    return this.http.post<any>(this.baseUrlToProduct, fd);
   }
 
   read(): Observable<Product[]> {
     return this.http.get<Product[]>(this.baseUrlToRead);
   }
 
-  readImage(id: string){
-    return this.http.get(`${this.baseUrl}/${id}`);
+  test(): Observable<any> {
+    return this.http.get('/users/profile', {observe: 'response'});
+  }
+
+  readById(id: any): Observable<Product> {
+    return this.http.get<Product>(`${this.baseUrlToProduct}/${id}`);
   }
 }
