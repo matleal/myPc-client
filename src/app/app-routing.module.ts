@@ -7,7 +7,6 @@ const routes: Routes = [
     { path: 'feed', loadChildren: () => import('./pages/feed/feed.module').then((m) => m.FeedModule) },
     { path: 'product', loadChildren: () => import('./pages/product/product.module').then((m) => m.ProductModule) },
     { path: 'profile', loadChildren: () => import('./pages/profile/profile.module').then((m) => m.ProfileModule) },
-    { path: 'product-info/:id', loadChildren: () => import('./pages/product-info/product-info.module').then(m => m.ProductInfoModule) },
   ]),
   { path: 'register', loadChildren: () => import('./register/register.module').then((m) => m.RegisterModule) },
   // Fallback when no prior route is matched

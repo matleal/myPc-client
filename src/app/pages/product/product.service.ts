@@ -8,13 +8,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ProductService {
-  baseUrl = 'http://localhost:3000/v1'
+  baseUrl = 'http://localhost:3000/v1';
   baseUrlToProduct = 'http://localhost:3000/v1/products';
   baseUrlToRead = 'http://localhost:3000/v1/products/all';
 
   constructor(private toastController: ToastController, private http: HttpClient) {}
 
-  async showMessage(msg: string){
+  async showMessage(msg: string) {
     const toast = await this.toastController.create({
       message: msg,
       duration: 3000,
@@ -39,7 +39,7 @@ export class ProductService {
   }
 
   test(): Observable<any> {
-    return this.http.get('/users/profile', {observe: 'response'});
+    return this.http.get('/users/profile', { observe: 'response' });
   }
 
   readById(id: any): Observable<Product> {

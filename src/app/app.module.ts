@@ -6,7 +6,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { TranslateModule } from '@ngx-translate/core';
 import { IonicModule } from '@ionic/angular';
-
+import { AuthInterceptor } from './core/interceptor/auth.interceptor';
+import { AuthExpiredInterceptor } from './core/interceptor/auth-expired.interceptor';
 import { environment } from '@env/environment';
 import { RouteReusableStrategy, ApiPrefixInterceptor, ErrorHandlerInterceptor, SharedModule } from '@shared';
 import { AuthModule } from '@app/auth';
@@ -34,12 +35,12 @@ import { AppRoutingModule } from './app-routing.module';
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: ApiPrefixInterceptor,
+      useClass: AuthInterceptor,
       multi: true,
     },
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: ErrorHandlerInterceptor,
+      useClass: AuthExpiredInterceptor,
       multi: true,
     },
     {

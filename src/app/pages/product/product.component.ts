@@ -32,6 +32,5 @@ export class ProductComponent implements OnInit {
       console.log('produto criado');
       this.productService.showMessage('Anuncio criado com sucesso!');
     });
-
   }
 }

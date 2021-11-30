@@ -6,17 +6,14 @@
 <ion-content>
   <ion-grid>
     <ion-row>
-      <ion-col  sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let product of products">
-        <ion-card href="tabs/product-info/{{ product._id }}">
+      <ion-col sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let product of products">
+        <ion-card href="tabs/feed/product-info/{{ product._id }}">
           <ion-card-header>
-            <img class="product-img" [src]=product.image />
+            <img class="product-img" [src]="product.image" />
             <ion-card-title>{{ product.title }}</ion-card-title>
             <ion-card-subtitle>{{ product.category }}</ion-card-subtitle>
             <h2>R${{ product.price }}</h2>
           </ion-card-header>
-          <!-- <ion-card-content>
-            {{ product.description }}
-          </ion-card-content> -->
         </ion-card>
       </ion-col>
     </ion-row>
