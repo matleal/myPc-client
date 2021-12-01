@@ -45,7 +45,6 @@ export class AuthenticationService {
     let data = {
       username: '',
       token: '',
-      role: '',
     };
 
     this.http
@@ -56,13 +55,11 @@ export class AuthenticationService {
           console.log(res);
           const token = res['token'];
           const user = res['user'];
-          const role = res['role'];
           console.log(res['token']);
           console.log(res['user']);
 
           data.username = user.email;
           data.token = token.accessToken;
-          data.role = user.role;
 
           this.credentialsService.setCredentials(data, context.remember);
           console.log(this.credentialsService.isAuthenticated());

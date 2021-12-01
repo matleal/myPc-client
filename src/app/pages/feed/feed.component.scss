@@ -1,6 +1,61 @@
 ion-card {
   text-align: center;
 }
-.product-img {
-  width: 12em;
+
+ion-grid {
+  margin: 2em;
+}
+
+.flip-card {
+  width: 100%;
+  height: 350px;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+.flipper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flipper {
+  transform: rotateY(180deg);
+}
+
+.front .product-img {
+  width: 18em;
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: medium;
+  margin: 0.5em;
+}
+
+h2 {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.front,
+.back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+.whats-button {
+  margin-bottom: 5%;
+  --border-radius: 25px;
+}
+
+.whats-button ion-icon {
+  margin-right: 5px;
 }

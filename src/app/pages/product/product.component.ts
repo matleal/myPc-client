@@ -10,9 +10,12 @@ import { Product } from './product.model';
 export class ProductComponent implements OnInit {
   product: Product = {
     _id: '',
+    userId: '',
     title: '',
     description: '',
     category: '',
+    contact: '',
+    adress: '',
     price: '',
   };
 
@@ -31,6 +34,7 @@ export class ProductComponent implements OnInit {
     this.productService.create(this.product, this.selectedFile).subscribe(() => {
       console.log('produto criado');
       this.productService.showMessage('Anuncio criado com sucesso!');
+      this.productService.emptyFields(this.product);
     });
   }
 }

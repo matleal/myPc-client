@@ -22,6 +22,16 @@
       </ion-item>
 
       <ion-item lines="full">
+        <ion-label position="floating">Endereço (Cidade)</ion-label>
+        <ion-input type="text" required [(ngModel)]="product.adress" name="adress"></ion-input>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Telefone para Contato</ion-label>
+        <ion-input type="text" required [(ngModel)]="product.contact" name="contact"></ion-input>
+      </ion-item>
+
+      <ion-item lines="full">
         <ion-label position="floating">Preço</ion-label>
         <ion-input type="price" required [(ngModel)]="product.price" name="price"></ion-input>
       </ion-item>

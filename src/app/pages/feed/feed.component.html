@@ -7,13 +7,40 @@
   <ion-grid>
     <ion-row>
       <ion-col sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let product of products">
-        <ion-card href="tabs/feed/product-info/{{ product._id }}">
+        <!-- <ion-card href="tabs/feed/product-info/{{ product._id }}">
           <ion-card-header>
             <img class="product-img" [src]="product.image" />
-            <ion-card-title>{{ product.title }}</ion-card-title>
+            <ion-card-title class="product-title">{{ product.title }}</ion-card-title>
             <ion-card-subtitle>{{ product.category }}</ion-card-subtitle>
-            <h2>R${{ product.price }}</h2>
+            <h2 class="product-price">R${{ product.price }}</h2>
           </ion-card-header>
+        </ion-card>  -->
+        <ion-card class="flip-card">
+          <div class="flipper">
+            <div class="front">
+              <img class="product-img" [src]="product.image" />
+              <h1 class="product-title">{{ product.title }}</h1>
+              <ion-text color="secondary">
+                <h2 class="product-price">R${{ product.price }}</h2>
+              </ion-text>
+            </div>
+            <div class="back">
+              <div class="back-container">
+                <h1>{{ product.title }}</h1>
+                <ion-text color="secondary">
+                  <h2 class="product-price">R${{ product.price }}</h2>
+                </ion-text>
+                <ion-text>
+                  <p><strong>Descrição</strong>: {{ product.description }}</p>
+                  <p><strong>Endereço:</strong>: {{ product.adress }}</p>
+                  <p><strong>Telefone para contato:</strong>: {{ product.contact }}</p>
+                </ion-text>
+                <ion-button class="whats-button" color="primary" [href]="product.whatsappContact" target="_blanket">
+                  <ion-icon name="logo-whatsapp"></ion-icon> Chamar no whats!
+                </ion-button>
+              </div>
+            </div>
+          </div>
         </ion-card>
       </ion-col>
     </ion-row>

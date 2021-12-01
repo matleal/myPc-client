@@ -1,3 +1,4 @@
+import { element } from 'protractor';
 import { Product } from './product.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -24,6 +25,17 @@ export class ProductService {
     await toast.present();
   }
 
+  emptyFields(product: Product) {
+    product._id = '';
+    product.title = '';
+    product.description = '';
+    product.category = '';
+    product.price = '';
+    product.contact = '';
+    product.adress = '';
+    product.image = '';
+  }
+
   create(product: Product, selectedFile: File): Observable<any> {
     const fd = new FormData();
     fd.append('image', selectedFile, selectedFile.name);
@@ -31,15 +43,13 @@ export class ProductService {
     fd.append('description', product.description);
     fd.append('category', product.category);
     fd.append('price', product.price);
+    fd.append('contact', product.contact);
+    fd.append('adress', product.adress);
     return this.http.post<any>(this.baseUrlToProduct, fd);
   }
 
   read(): Observable<Product[]> {
     return this.http.get<Product[]>(this.baseUrlToRead);
-  }
-
-  test(): Observable<any> {
-    return this.http.get('/users/profile', { observe: 'response' });
   }
 
   readById(id: any): Observable<Product> {
