@@ -10,7 +10,17 @@ import { Observable } from 'rxjs';
 export class RegisterService {
   baseUrl = 'http://localhost:3000/v1/auth/register';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private toastController: ToastController) {}
+
+  async showMessage(msg: string) {
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: 3000,
+      color: 'primary',
+    });
+
+    await toast.present();
+  }
 
   create(user: User): Observable<User> {
     return this.http.post<User>(this.baseUrl, user);

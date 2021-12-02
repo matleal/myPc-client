@@ -4,10 +4,6 @@ import { FeedComponent } from './feed.component';
 
 const routes: Routes = [
   { path: '', component: FeedComponent },
-  {
-    path: 'product-info/:id',
-    loadChildren: () => import('../product-info/product-info.module').then((m) => m.ProductInfoModule),
-  },
 ];
 
 @NgModule({

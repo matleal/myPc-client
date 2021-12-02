@@ -55,4 +55,16 @@ export class ProductService {
   readById(id: any): Observable<Product> {
     return this.http.get<Product>(`${this.baseUrlToProduct}/${id}`);
   }
+
+  update(product: Product, selectedFile: File): Observable<any> {
+    const fd = new FormData();
+    fd.append('image', selectedFile, selectedFile.name);
+    fd.append('title', product.title);
+    fd.append('description', product.description);
+    fd.append('category', product.category);
+    fd.append('price', product.price);
+    fd.append('contact', product.contact);
+    fd.append('adress', product.adress);
+    return this.http.put<any>(`${this.baseUrlToProduct}/${product._id}`, fd);
+  }
 }

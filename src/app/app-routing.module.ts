@@ -6,7 +6,8 @@ const routes: Routes = [
   Shell.childRoutes([
     { path: 'feed', loadChildren: () => import('./pages/feed/feed.module').then((m) => m.FeedModule) },
     { path: 'product', loadChildren: () => import('./pages/product/product.module').then((m) => m.ProductModule) },
-    { path: 'profile', loadChildren: () => import('./pages/profile/profile.module').then((m) => m.ProfileModule) },
+    { path: 'myProducts', loadChildren: () => import('./pages/my-products/profile.module').then((m) => m.ProfileModule) },
+    { path: 'updateProduct/:_id', loadChildren: () => import('./pages/update-product/update-product.module').then(m => m.UpdateProductModule) },
   ]),
   { path: 'register', loadChildren: () => import('./register/register.module').then((m) => m.RegisterModule) },
   // Fallback when no prior route is matched

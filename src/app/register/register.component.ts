@@ -1,3 +1,4 @@
+import { ToastController } from '@ionic/angular';
 import { RegisterService } from './register.service';
 import { User } from './user.model';
 import { Component, OnInit } from '@angular/core';
@@ -24,6 +25,7 @@ export class RegisterComponent implements OnInit {
     console.log('Clicou');
     return this.registerService.create(this.user).subscribe(() => {
       console.log('Usuario criado!');
+      this.registerService.showMessage('Usuario criado com sucesso!');
     });
   }
 }
