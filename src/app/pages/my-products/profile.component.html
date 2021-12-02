@@ -7,7 +7,7 @@
   <ion-list>
     <ion-item *ngFor="let product of products">
       <ion-label>{{product.title}}</ion-label>
-        <ion-button routerLink='/tabs/updateProduct/{{product._id}}' [replaceUrl]='true'>
+        <ion-button (click)="navigateTo(product._id)">
         <ion-icon name="create-outline"></ion-icon>
       </ion-button>
       <ion-button color="danger">

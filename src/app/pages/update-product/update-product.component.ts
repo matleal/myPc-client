@@ -32,7 +32,7 @@ export class UpdateProductComponent implements OnInit {
   }
 
   cancel(): void {
-    this.router.navigate(['/myProducts']);
+    this.router.navigate(['tabs/myProducts'], { replaceUrl: true });
   }
 
 }
