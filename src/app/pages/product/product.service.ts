@@ -67,4 +67,8 @@ export class ProductService {
     fd.append('adress', product.adress);
     return this.http.put<any>(`${this.baseUrlToProduct}/${product._id}`, fd);
   }
+
+  delete(id: any): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrlToProduct}/${id}`);
+  }
 }

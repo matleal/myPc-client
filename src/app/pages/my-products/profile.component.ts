@@ -25,4 +25,12 @@ export class ProfileComponent implements OnInit {
       replaceUrl: true,
     });
   }
+
+  remove(id: string) {
+    this.productService.delete(id).subscribe(() => {
+      console.log('produto deletado!');
+      this.productService.showMessage('Produto deletado com sucesso!');
+      this.ngOnInit();
+    });
+  }
 }

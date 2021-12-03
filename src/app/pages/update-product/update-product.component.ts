@@ -6,20 +6,27 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-update-product',
   templateUrl: './update-product.component.html',
-  styleUrls: ['./update-product.component.scss']
+  styleUrls: ['./update-product.component.scss'],
 })
 export class UpdateProductComponent implements OnInit {
-  product!: Product;
+  product: Product = {
+    _id: '',
+    userId: '',
+    title: '',
+    description: '',
+    category: '',
+    price: '',
+    adress: '',
+    contact: '',
+  };
   selectedFile: any;
 
-  constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('_id');
-    console.log(id);
-    this.productService.readById(id).subscribe(product => {
+    this.productService.readById(id).subscribe((product) => {
       this.product = product;
-      console.log(this.product);
     });
   }
 
@@ -27,12 +34,9 @@ export class UpdateProductComponent implements OnInit {
     this.selectedFile = <File>event.target.files[0];
   }
 
-  updateProduct(product: Product): void {
-
-  }
+  updateProduct(product: Product): void {}
 
   cancel(): void {
     this.router.navigate(['tabs/myProducts'], { replaceUrl: true });
   }
-
 }
