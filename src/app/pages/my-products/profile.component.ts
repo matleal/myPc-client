@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  navigateTo(id: string) {
+  navigateToUpdate(id: string) {
     this.router.navigate([`tabs/updateProduct`, id], {
       replaceUrl: true,
     });

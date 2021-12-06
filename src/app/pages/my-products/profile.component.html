@@ -6,8 +6,11 @@
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let product of products">
+      <ion-thumbnail slot="start">
+        <img [src]="product.image">
+      </ion-thumbnail>
       <ion-label>{{ product.title }}</ion-label>
-      <ion-button (click)="navigateTo(product._id)">
+      <ion-button (click)="navigateToUpdate(product._id)">
         <ion-icon name="create-outline"></ion-icon>
       </ion-button>
       <ion-button color="danger" (click)="remove(product._id)">

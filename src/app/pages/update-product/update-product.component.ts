@@ -34,7 +34,11 @@ export class UpdateProductComponent implements OnInit {
     this.selectedFile = <File>event.target.files[0];
   }
 
-  updateProduct(product: Product): void {}
+  updateProduct(product: Product): void {
+    this.productService.update(product, this.selectedFile).subscribe((response) => {
+      this.router.navigate(['tabs/myProducts'], { replaceUrl: true });
+    });
+  }
 
   cancel(): void {
     this.router.navigate(['tabs/myProducts'], { replaceUrl: true });

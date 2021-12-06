@@ -37,8 +37,13 @@
       </ion-item>
 
       <ion-item>
-        <ion-input type="file" (change)="onFileSelected($event)"></ion-input>
+        <img class="product-image" [src]="product.image">
       </ion-item>
+
+      <ion-item>
+        <ion-input type="file" value={{product.image}} (change)="onFileSelected($event)"></ion-input>
+      </ion-item>
+
 
       <ion-button (click)="updateProduct(product)">Editar Produto</ion-button>
       <ion-button (click)="cancel()">Cancelar</ion-button>

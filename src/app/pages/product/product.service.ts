@@ -45,6 +45,7 @@ export class ProductService {
     fd.append('price', product.price);
     fd.append('contact', product.contact);
     fd.append('adress', product.adress);
+
     return this.http.post<any>(this.baseUrlToProduct, fd);
   }
 
@@ -58,14 +59,21 @@ export class ProductService {
 
   update(product: Product, selectedFile: File): Observable<any> {
     const fd = new FormData();
-    fd.append('image', selectedFile, selectedFile.name);
+
+    if (selectedFile) {
+      fd.append('image', selectedFile, selectedFile.name);
+    }
+
+    fd.append('_id', product._id);
     fd.append('title', product.title);
     fd.append('description', product.description);
     fd.append('category', product.category);
     fd.append('price', product.price);
     fd.append('contact', product.contact);
     fd.append('adress', product.adress);
-    return this.http.put<any>(`${this.baseUrlToProduct}/${product._id}`, fd);
+    console.log(fd);
+
+    return this.http.put<any>(this.baseUrlToProduct, fd);
   }
 
   delete(id: any): Observable<any> {
