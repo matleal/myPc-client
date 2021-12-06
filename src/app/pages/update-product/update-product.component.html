@@ -37,11 +37,11 @@
       </ion-item>
 
       <ion-item>
-        <img class="product-image" [src]="product.image">
+        <img class="product-image" [src]="image">
       </ion-item>
 
       <ion-item>
-        <ion-input type="file" value={{product.image}} (change)="onFileSelected($event)"></ion-input>
+        <ion-input type="file" (change)="onFileSelected($event)"></ion-input>
       </ion-item>
 
 

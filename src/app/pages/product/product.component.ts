@@ -19,6 +19,7 @@ export class ProductComponent implements OnInit {
     price: '',
   };
 
+  image: any;
   selectedFile: any;
 
   constructor(private productService: ProductService) {}
@@ -26,8 +27,13 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {}
 
   onFileSelected(event: any) {
+    let reader = new FileReader();
+    reader.onload = (event:any) => {
+      this.image = event.target.result;
+    }
+    reader.readAsDataURL(event.target.files[0]);  // to trigger onload
+
     this.selectedFile = <File>event.target.files[0];
-    console.log(this.selectedFile);
   }
 
   createProduct() {
