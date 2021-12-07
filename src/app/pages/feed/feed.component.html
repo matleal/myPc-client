@@ -12,14 +12,14 @@
             <div class="front">
               <img class="product-img" [src]="product.image" />
               <h1 class="product-title">{{ product.title }}</h1>
-              <ion-text color="secondary">
+              <ion-text color="primary">
                 <h2 class="product-price">R${{ product.price }}</h2>
               </ion-text>
             </div>
             <div class="back">
               <div class="back-container">
                 <h1>{{ product.title }}</h1>
-                <ion-text color="secondary">
+                <ion-text color="primary">
                   <h2 class="product-price">R${{ product.price }}</h2>
                 </ion-text>
                 <ion-text>
@@ -27,7 +27,7 @@
                   <p><strong>Endereço:</strong>: {{ product.adress }}</p>
                   <p><strong>Telefone para contato:</strong>: {{ product.contact }}</p>
                 </ion-text>
-                <ion-button class="whats-button" color="primary" [href]="product.whatsappContact" target="_blanket">
+                <ion-button class="whats-button" color="success" [href]="product.whatsappContact" target="_blanket">
                   <ion-icon name="logo-whatsapp"></ion-icon> Chamar no whats!
                 </ion-button>
               </div>

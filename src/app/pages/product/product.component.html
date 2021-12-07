@@ -37,14 +37,18 @@
       </ion-item>
 
       <ion-item>
-        <img class="image-preview" [src]="image">
+        <img class="image-preview" [src]="image" />
       </ion-item>
 
       <ion-item>
         <ion-input type="file" (change)="onFileSelected($event)"></ion-input>
       </ion-item>
 
-      <ion-button (click)="createProduct()">Criar Produto</ion-button>
+      <ion-item>
+        <ion-button color="secondary" class="create-button" size="default" slot="end" (click)="createProduct()"
+          >Anunciar!</ion-button
+        >
+      </ion-item>
     </form>
   </ion-card>
 </ion-content>
