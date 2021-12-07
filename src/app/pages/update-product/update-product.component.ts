@@ -1,5 +1,6 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../services/product.service';
+import { ToastService } from '../../services/toast.service';
 import { Product } from '../../@shared/models/product.model';
 import { Component, OnInit } from '@angular/core';
 
@@ -23,7 +24,12 @@ export class UpdateProductComponent implements OnInit {
   selectedFile: any;
   image: any;
 
-  constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private productService: ProductService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private toastService: ToastService
+  ) {}
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('_id');
@@ -45,7 +51,7 @@ export class UpdateProductComponent implements OnInit {
 
   updateProduct(product: Product): void {
     this.productService.update(product, this.selectedFile).subscribe((response) => {
-      this.productService.showMessage('Produto atualizado com sucesso!');
+      this.toastService.showMessage('Produto atualizado com sucesso!');
       this.router.navigate(['tabs/myProducts'], { replaceUrl: true });
     });
   }

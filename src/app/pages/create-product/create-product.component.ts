@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
+import { ToastService } from '@app/services/toast.service';
 import { Product } from '../../@shared/models/product.model';
 
 @Component({
@@ -22,7 +23,7 @@ export class ProductComponent implements OnInit {
   image: any;
   selectedFile: any;
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private toastService: ToastService) {}
 
   ngOnInit(): void {}
 
@@ -39,7 +40,7 @@ export class ProductComponent implements OnInit {
   createProduct() {
     this.productService.create(this.product, this.selectedFile).subscribe(() => {
       console.log('produto criado');
-      this.productService.showMessage('Anuncio criado com sucesso!');
+      this.toastService.showMessage('Anuncio criado com sucesso!');
       this.productService.emptyFields(this.product);
     });
   }
