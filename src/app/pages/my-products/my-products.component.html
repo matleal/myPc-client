@@ -7,7 +7,7 @@
   <ion-list>
     <ion-item *ngFor="let product of products">
       <ion-thumbnail slot="start">
-        <img [src]="product.image">
+        <img [src]="product.image" />
       </ion-thumbnail>
       <ion-label>{{ product.title }}</ion-label>
       <ion-button (click)="navigateToUpdate(product._id)">

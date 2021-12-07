@@ -11,7 +11,7 @@ import { MockCredentialsService } from '@app/auth/credentials.service.mock';
 import { I18nModule } from '@app/i18n';
 import { ShellComponent } from './shell.component';
 
-import { SettingsModule } from '@app/settings/settings.module';
+import { SettingsModule } from '@app/pages/settings/settings.module';
 
 describe('ShellComponent', () => {
   let component: ShellComponent;

@@ -1,12 +1,12 @@
 import { Router } from '@angular/router';
-import { Product } from './../product/product.model';
-import { ProductService } from './../product/product.service';
+import { Product } from '../../@shared/models/product.model';
+import { ProductService } from '../../services/product.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss'],
+  templateUrl: './my-products.component.html',
+  styleUrls: ['./my-products.component.scss'],
 })
 export class ProfileComponent implements OnInit {
   products: Product[] = [];
@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit {
   constructor(private productService: ProductService, private router: Router) {}
 
   ngOnInit(): void {
-    this.productService.read().subscribe((products) => {
+    this.productService.readByUserId().subscribe((products) => {
       this.products = products;
       console.log(products);
     });

@@ -1,4 +1,4 @@
-import { User } from './user.model';
+import { User } from '../@shared/models/user.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ToastController } from '@ionic/angular';

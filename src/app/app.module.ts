@@ -12,7 +12,7 @@ import { environment } from '@env/environment';
 import { RouteReusableStrategy, ApiPrefixInterceptor, ErrorHandlerInterceptor, SharedModule } from '@shared';
 import { AuthModule } from '@app/auth';
 import { ShellModule } from './shell/shell.module';
-import { SettingsModule } from './settings/settings.module';
+import { SettingsModule } from './pages/settings/settings.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 

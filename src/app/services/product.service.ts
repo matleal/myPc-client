@@ -1,5 +1,5 @@
 import { element } from 'protractor';
-import { Product } from './product.model';
+import { Product } from '../@shared/models/product.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ToastController } from '@ionic/angular';
@@ -12,6 +12,7 @@ export class ProductService {
   baseUrl = 'http://localhost:3000/v1';
   baseUrlToProduct = 'http://localhost:3000/v1/products';
   baseUrlToRead = 'http://localhost:3000/v1/products/all';
+  baseUrlToReadByUserId = 'http://localhost:3000/v1/products/byUserId';
 
   constructor(private toastController: ToastController, private http: HttpClient) {}
 
@@ -51,6 +52,10 @@ export class ProductService {
 
   read(): Observable<Product[]> {
     return this.http.get<Product[]>(this.baseUrlToRead);
+  }
+
+  readByUserId(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.baseUrlToReadByUserId);
   }
 
   readById(id: any): Observable<Product> {

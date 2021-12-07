@@ -1,6 +1,6 @@
 import { ToastController } from '@ionic/angular';
 import { RegisterService } from './register.service';
-import { User } from './user.model';
+import { User } from '../@shared/models/user.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

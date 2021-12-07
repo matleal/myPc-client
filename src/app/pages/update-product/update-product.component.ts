@@ -1,6 +1,6 @@
 import { Router, ActivatedRoute } from '@angular/router';
-import { ProductService } from './../product/product.service';
-import { Product } from './../product/product.model';
+import { ProductService } from '../../services/product.service';
+import { Product } from '../../@shared/models/product.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -35,10 +35,10 @@ export class UpdateProductComponent implements OnInit {
 
   onFileSelected(event: any) {
     let reader = new FileReader();
-    reader.onload = (event:any) => {
+    reader.onload = (event: any) => {
       this.image = event.target.result;
-    }
-    reader.readAsDataURL(event.target.files[0]);  // to trigger onload
+    };
+    reader.readAsDataURL(event.target.files[0]); // to trigger onload
 
     this.selectedFile = <File>event.target.files[0];
   }

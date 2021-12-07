@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { User } from '../register/user.model';
+import { User } from '../@shared/models/user.model';
 
 import { Credentials, CredentialsService } from './credentials.service';
 
