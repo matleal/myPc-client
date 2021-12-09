@@ -1,8 +1,9 @@
+import { Product } from './../../@shared/models/product.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { ToastService } from '../../services/toast.service';
-import { Product } from '../../@shared/models/product.model';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-update-product',
@@ -10,17 +11,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./update-product.component.scss'],
 })
 export class UpdateProductComponent implements OnInit {
-  product: Product = {
-    _id: '',
-    userId: '',
-    title: '',
-    description: '',
-    category: '',
-    price: '',
-    adress: '',
-    contact: '',
-  };
-
+  productForm!: FormGroup;
+  newProduct!: Product;
+  productCategories!: string[];
   selectedFile: any;
   image: any;
 
@@ -28,13 +21,34 @@ export class UpdateProductComponent implements OnInit {
     private productService: ProductService,
     private router: Router,
     private route: ActivatedRoute,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private fb: FormBuilder
   ) {}
 
+  loadForms() {
+    this.productForm = this.fb.group({
+      _id: [''],
+      title: ['', Validators.required],
+      description: ['', Validators.required],
+      category: ['', Validators.required],
+      contact: ['', Validators.required],
+      adress: ['', Validators.required],
+      price: ['', Validators.required],
+    });
+  }
+
+  populateForms(product: Product) {
+    this.productForm.patchValue(product);
+  }
+
   ngOnInit(): void {
+    this.loadForms();
+    this.productCategories = this.productService.getCategories();
+
     const id = this.route.snapshot.paramMap.get('_id');
+
     this.productService.readById(id).subscribe((product) => {
-      this.product = product;
+      this.populateForms(product);
       this.image = product.image;
     });
   }
@@ -49,8 +63,10 @@ export class UpdateProductComponent implements OnInit {
     this.selectedFile = <File>event.target.files[0];
   }
 
-  updateProduct(product: Product): void {
-    this.productService.update(product, this.selectedFile).subscribe((response) => {
+  updateProduct(): void {
+    this.newProduct = this.productForm.value;
+
+    this.productService.update(this.newProduct, this.selectedFile).subscribe((response) => {
       this.toastService.showMessage('Produto atualizado com sucesso!');
       this.router.navigate(['tabs/myProducts'], { replaceUrl: true });
     });

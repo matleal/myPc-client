@@ -18,8 +18,9 @@ export class ProductComponent implements OnInit {
 
   constructor(private productService: ProductService, private toastService: ToastService, private fb: FormBuilder) {}
 
-  ngOnInit() {
+  loadForms() {
     this.productForm = this.fb.group({
+      _id: [''],
       title: ['', Validators.required],
       description: ['', Validators.required],
       category: ['', Validators.required],
@@ -27,7 +28,10 @@ export class ProductComponent implements OnInit {
       adress: ['', Validators.required],
       price: ['', Validators.required],
     });
+  }
 
+  ngOnInit() {
+    this.loadForms()
     this.productCategories = this.productService.getCategories();
     this.image = '';
   }
@@ -43,8 +47,8 @@ export class ProductComponent implements OnInit {
   }
 
   createProduct() {
-    this.newProduct = this.productForm.value; // It merge the form values with the product object
-    console.log(this.newProduct);
+    this.newProduct = this.productForm.value;
+
     this.productService.create(this.newProduct, this.selectedFile).subscribe(() => {
       console.log('produto criado');
       this.toastService.showMessage('Anuncio criado com sucesso!');

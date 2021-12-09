@@ -5,35 +5,39 @@
 </ion-header>
 <ion-content>
   <ion-card>
-    <form>
+    <form [formGroup]="productForm">
       <ion-item lines="full">
         <ion-label position="floating">Produto</ion-label>
-        <ion-input type="text" required [(ngModel)]="product.title" name="title"></ion-input>
+        <ion-input type="text" required formControlName="title"></ion-input>
       </ion-item>
 
       <ion-item lines="full">
         <ion-label position="floating">Categoria</ion-label>
-        <ion-input type="text" required [(ngModel)]="product.category" name="category"></ion-input>
+        <ion-select interface="popover" formControlName="category">
+          <ion-select-option *ngFor="let productCategory of productCategories" [value]="productCategory">
+            {{productCategory}}
+          </ion-select-option>
+        </ion-select>
       </ion-item>
 
       <ion-item lines="full">
         <ion-label position="floating">Descrição</ion-label>
-        <ion-input type="text" required [(ngModel)]="product.description" name="description"></ion-input>
+        <ion-input type="text" required formControlName="description"></ion-input>
       </ion-item>
 
       <ion-item lines="full">
         <ion-label position="floating">Endereço (Cidade)</ion-label>
-        <ion-input type="text" required [(ngModel)]="product.adress" name="adress"></ion-input>
+        <ion-input type="text" required formControlName="adress"></ion-input>
       </ion-item>
 
       <ion-item lines="full">
         <ion-label position="floating">Telefone para Contato</ion-label>
-        <ion-input type="text" required [(ngModel)]="product.contact" name="contact"></ion-input>
+        <ion-input type="text" required formControlName="contact"></ion-input>
       </ion-item>
 
       <ion-item lines="full">
         <ion-label position="floating">Preço</ion-label>
-        <ion-input type="price" required [(ngModel)]="product.price" name="price"></ion-input>
+        <ion-input type="price" required formControlName="price"></ion-input>
       </ion-item>
 
       <ion-item>
@@ -45,12 +49,25 @@
       </ion-item>
 
       <ion-item class="button-container">
-        <ion-button class="update-button" color="secondary" slot="end" size="medium" (click)="updateProduct(product)"
-          >Editar Produto</ion-button
+        <ion-button
+          class="update-button"
+          color="secondary"
+          slot="end"
+          size="medium"
+          (click)="updateProduct()"
         >
-        <ion-button class="update-button" color="danger" slot="end" size="medium" (click)="cancel()"
-          >Cancelar</ion-button
+          Editar Produto
+        </ion-button>
+
+        <ion-button
+          class="update-button"
+          color="danger"
+          slot="end"
+          size="medium"
+          (click)="cancel()"
         >
+          Cancelar
+        </ion-button>
       </ion-item>
     </form>
   </ion-card>
