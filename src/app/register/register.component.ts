@@ -3,6 +3,7 @@ import { RegisterService } from './register.service';
 import { User } from '../@shared/models/user.model';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -10,20 +11,32 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  user: User = {
-    email: '',
-    name: '',
-    password: '',
-  };
+  user!: User;
+  userForm!: FormGroup;
 
-  constructor(private registerService: RegisterService, private toastService: ToastService, private router: Router) {}
+  constructor(
+    private registerService: RegisterService,
+    private toastService: ToastService,
+    private router: Router,
+    private fb: FormBuilder,
+  ) {}
+
+  loadForms() {
+    this.userForm = this.fb.group({
+      email: ['', Validators.required, Validators.email],
+      name: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
 
   ngOnInit(): void {
-    console.log(this.user);
+    this.loadForms();
   }
 
   createUser() {
-    console.log('Clicou');
+    this.user = this.userForm.value;
+    console.log(this.user);
+
     return this.registerService.create(this.user).subscribe(() => {
       this.toastService.showMessage('Usuario criado com sucesso!');
       this.router.navigate(['login'], { replaceUrl: true });

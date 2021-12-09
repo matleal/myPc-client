@@ -6,20 +6,20 @@
 
 <ion-content>
   <ion-card>
-    <form>
+    <form [formGroup]="userForm">
       <ion-item lines="full">
         <ion-label position="floating">Email</ion-label>
-        <ion-input type="text" required [(ngModel)]="user.email" name="email"></ion-input>
+        <ion-input type="email" required formControlName="email"></ion-input>
       </ion-item>
 
       <ion-item lines="full">
         <ion-label position="floating">Nome</ion-label>
-        <ion-input type="text" required [(ngModel)]="user.name" name="name"></ion-input>
+        <ion-input type="text" required formControlName="name"></ion-input>
       </ion-item>
 
       <ion-item lines="full">
         <ion-label position="floating">Senha</ion-label>
-        <ion-input type="text" required [(ngModel)]="user.password" name="password"></ion-input>
+        <ion-input type="password" required formControlName="password"></ion-input>
       </ion-item>
 
       <ion-row>
