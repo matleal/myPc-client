@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { ToastService } from '@app/services/toast.service';
 import { Product } from '../../@shared/models/product.model';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-product',
@@ -9,23 +10,27 @@ import { Product } from '../../@shared/models/product.model';
   styleUrls: ['./create-product.component.scss'],
 })
 export class ProductComponent implements OnInit {
-  product: Product = {
-    _id: '',
-    userId: '',
-    title: '',
-    description: '',
-    category: '',
-    contact: '',
-    adress: '',
-    price: '',
-  };
-
+  productForm!: FormGroup;
+  newProduct!: Product;
+  productCategories!: string[];
   image: any;
   selectedFile: any;
 
-  constructor(private productService: ProductService, private toastService: ToastService) {}
+  constructor(private productService: ProductService, private toastService: ToastService, private fb: FormBuilder) {}
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.productForm = this.fb.group({
+      title: ['', Validators.required],
+      description: ['', Validators.required],
+      category: ['', Validators.required],
+      contact: ['', Validators.required],
+      adress: ['', Validators.required],
+      price: ['', Validators.required],
+    });
+
+    this.productCategories = this.productService.getCategories();
+    this.image = '';
+  }
 
   onFileSelected(event: any) {
     let reader = new FileReader();
@@ -38,10 +43,12 @@ export class ProductComponent implements OnInit {
   }
 
   createProduct() {
-    this.productService.create(this.product, this.selectedFile).subscribe(() => {
+    this.newProduct = this.productForm.value; // It merge the form values with the product object
+    console.log(this.newProduct);
+    this.productService.create(this.newProduct, this.selectedFile).subscribe(() => {
       console.log('produto criado');
       this.toastService.showMessage('Anuncio criado com sucesso!');
-      this.productService.emptyFields(this.product);
+      this.ngOnInit();
     });
   }
 }

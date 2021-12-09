@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Product } from '../../@shared/models/product.model';
 import { ProductService } from '../../services/product.service';
+import { ToastService } from '@app/services/toast.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class ProfileComponent implements OnInit {
   products: Product[] = [];
 
-  constructor(private productService: ProductService, private router: Router) {}
+  constructor(private productService: ProductService, private router: Router, private toastService: ToastService) {}
 
   ngOnInit(): void {
     this.productService.readByUserId().subscribe((products) => {
@@ -29,7 +30,7 @@ export class ProfileComponent implements OnInit {
   remove(id: string) {
     this.productService.delete(id).subscribe(() => {
       console.log('produto deletado!');
-      this.productService.showMessage('Produto deletado com sucesso!');
+      this.toastService.showMessage('Produto deletado com sucesso!');
       this.ngOnInit();
     });
   }

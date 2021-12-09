@@ -1,8 +1,6 @@
-import { element } from 'protractor';
 import { Product } from '../@shared/models/product.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ToastController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -14,17 +12,7 @@ export class ProductService {
   baseUrlToRead = 'http://localhost:3000/v1/products/all';
   baseUrlToReadByUserId = 'http://localhost:3000/v1/products/byUserId';
 
-  constructor(private toastController: ToastController, private http: HttpClient) {}
-
-  async showMessage(msg: string) {
-    const toast = await this.toastController.create({
-      message: msg,
-      duration: 3000,
-      color: 'primary',
-    });
-
-    await toast.present();
-  }
+  constructor(private http: HttpClient) {}
 
   emptyFields(product: Product) {
     product._id = '';
@@ -48,6 +36,24 @@ export class ProductService {
     fd.append('adress', product.adress);
 
     return this.http.post<any>(this.baseUrlToProduct, fd);
+  }
+
+  getCategories(): string[] {
+    const categories = [
+      'Placa de video',
+      'Placa mãe',
+      'Processador',
+      'Memória RAM',
+      'Fonte',
+      'Gabinete',
+      'Cooler',
+      'HD',
+      'SSD',
+      'Perifericos',
+      'Outros',
+    ];
+
+    return categories;
   }
 
   read(): Observable<Product[]> {
