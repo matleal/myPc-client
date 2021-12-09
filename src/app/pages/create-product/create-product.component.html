@@ -45,12 +45,20 @@
       </ion-item>
 
       <ion-item>
-        <ion-input type="file" (change)="onFileSelected($event)"></ion-input>
+        <ion-input type="file" (change)="onFileSelected($event)" required></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-button color="secondary" class="create-button" size="default" slot="end" (click)="createProduct()"
-          >Anunciar!</ion-button
+        <ion-button
+          color="secondary"
+          class="create-button"
+          size="default"
+          slot="end"
+          (click)="createProduct()"
+          [disabled]="!productForm.valid"
+        >
+          Anunciar!
+        </ion-button
         >
       </ion-item>
     </form>
