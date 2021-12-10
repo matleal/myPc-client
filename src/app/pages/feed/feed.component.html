@@ -6,6 +6,12 @@
 <ion-content>
   <ion-grid>
     <ion-row>
+      <ion-list>
+        <ion-button (click)="listByCategory('Periferico')"> Gabinetes </ion-button>
+      </ion-list>
+    </ion-row>
+
+    <ion-row>
       <ion-col sizeLg="3" sizeMd="4" sizeXs="12" *ngFor="let product of products">
         <ion-card class="flip-card ion-text-center">
           <div class="flipper">

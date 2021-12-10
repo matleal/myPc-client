@@ -4,71 +4,63 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-card>
-    <form [formGroup]="productForm">
-      <ion-item lines="full">
-        <ion-label position="floating">Produto</ion-label>
-        <ion-input type="text" required formControlName="title"></ion-input>
-      </ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <form [formGroup]="productForm">
+          <ion-item lines="full">
+            <ion-label position="floating">Produto</ion-label>
+            <ion-input type="text" required formControlName="title"></ion-input>
+          </ion-item>
 
-      <ion-item lines="full">
-        <ion-label position="floating">Categoria</ion-label>
-        <ion-select interface="popover" formControlName="category">
-          <ion-select-option *ngFor="let productCategory of productCategories" [value]="productCategory">
-            {{productCategory}}
-          </ion-select-option>
-        </ion-select>
-      </ion-item>
+          <ion-item lines="full">
+            <ion-label position="floating">Categoria</ion-label>
+            <ion-select interface="popover" formControlName="category">
+              <ion-select-option *ngFor="let productCategory of productCategories" [value]="productCategory">
+                {{ productCategory }}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
 
-      <ion-item lines="full">
-        <ion-label position="floating">Descrição</ion-label>
-        <ion-input type="text" required formControlName="description"></ion-input>
-      </ion-item>
+          <ion-item lines="full">
+            <ion-label position="floating">Descrição</ion-label>
+            <ion-input type="text" required formControlName="description"></ion-input>
+          </ion-item>
 
-      <ion-item lines="full">
-        <ion-label position="floating">Endereço (Cidade)</ion-label>
-        <ion-input type="text" required formControlName="adress"></ion-input>
-      </ion-item>
+          <ion-item lines="full">
+            <ion-label position="floating">Endereço (Cidade)</ion-label>
+            <ion-input type="text" required formControlName="adress"></ion-input>
+          </ion-item>
 
-      <ion-item lines="full">
-        <ion-label position="floating">Telefone para Contato</ion-label>
-        <ion-input type="text" required formControlName="contact"></ion-input>
-      </ion-item>
+          <ion-item lines="full">
+            <ion-label position="floating">Telefone para Contato</ion-label>
+            <ion-input type="text" required formControlName="contact"></ion-input>
+          </ion-item>
 
-      <ion-item lines="full">
-        <ion-label position="floating">Preço</ion-label>
-        <ion-input type="price" required formControlName="price"></ion-input>
-      </ion-item>
+          <ion-item lines="full">
+            <ion-label position="floating">Preço</ion-label>
+            <ion-input type="price" required formControlName="price"></ion-input>
+          </ion-item>
 
-      <ion-item>
-        <img class="product-image" [src]="image" />
-      </ion-item>
+          <ion-item>
+            <img class="product-image" [src]="image" />
+          </ion-item>
 
-      <ion-item>
-        <ion-input type="file" (change)="onFileSelected($event)"></ion-input>
-      </ion-item>
+          <ion-item>
+            <ion-input type="file" (change)="onFileSelected($event)"></ion-input>
+          </ion-item>
 
-      <ion-item class="button-container">
-        <ion-button
-          class="update-button"
-          color="secondary"
-          slot="end"
-          size="medium"
-          (click)="updateProduct()"
-        >
-          Editar Produto
-        </ion-button>
+          <ion-item class="button-container">
+            <ion-button class="update-button" color="secondary" slot="end" size="default" (click)="updateProduct()">
+              Editar Produto
+            </ion-button>
 
-        <ion-button
-          class="update-button"
-          color="danger"
-          slot="end"
-          size="medium"
-          (click)="cancel()"
-        >
-          Cancelar
-        </ion-button>
-      </ion-item>
-    </form>
-  </ion-card>
+            <ion-button class="update-button" color="danger" slot="end" size="medium" (click)="cancel()">
+              Cancelar
+            </ion-button>
+          </ion-item>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
