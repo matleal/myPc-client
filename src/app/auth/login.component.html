@@ -4,12 +4,7 @@
     <ion-row class="ion-justify-content-center ion-no-padding">
       <ion-col size-sm="8" size-lg="6" size-xl="4" class="ion-align-self-center ion-no-padding">
         <div class="login-header ion-text-center">
-          <h1 translate>My PC</h1>
-          <h6>v{{ version }}</h6>
-          <ion-list *ngIf="isWeb" color="primary" lines="none" class="ion-no-padding">
-            <app-language-selector type="select" itemClass="ion-color ion-color-primary item-lines-none">
-            </app-language-selector>
-          </ion-list>
+          <img src="assets/logo.png" alt="Logo" />
         </div>
         <div class="login-container">
           <form (ngSubmit)="login()" [formGroup]="loginForm" novalidate>
@@ -18,29 +13,25 @@
             </ion-text>
             <ion-list>
               <ion-item lines="inset">
-                <ion-label color="medium" position="floating" translate>Username</ion-label>
+                <ion-label color="medium" position="floating" translate>Email</ion-label>
                 <ion-input type="text" formControlName="username" autocomplete="username"></ion-input>
               </ion-item>
               <ion-text
                 color="danger"
                 [hidden]="loginForm.controls.username.valid || loginForm.controls.username.untouched"
               >
-                <span class="ion-padding" translate>Username is required</span>
+                <span class="ion-padding" translate>É necessario o email para logar</span>
               </ion-text>
               <ion-item lines="inset">
-                <ion-label color="medium" position="floating" translate>Password</ion-label>
+                <ion-label color="medium" position="floating" translate>Senha</ion-label>
                 <ion-input type="password" formControlName="password" autocomplete="current-password"></ion-input>
               </ion-item>
               <ion-text
                 color="danger"
                 [hidden]="loginForm.controls.password.valid || loginForm.controls.password.untouched"
               >
-                <span class="ion-padding" translate>Password is required</span>
+                <span class="ion-padding" translate>É necessario a senha para logar</span>
               </ion-text>
-              <ion-item class="ion-padding-top" lines="none">
-                <ion-label translate>Remember me</ion-label>
-                <ion-checkbox slot="start" formControlName="remember"></ion-checkbox>
-              </ion-item>
             </ion-list>
             <div class="ion-padding-horizontal">
               <ion-button
