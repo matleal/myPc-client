@@ -4,13 +4,52 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
+  <div class="home-categories-filter">
+    <ion-button
+      id="home-categories-prev"
+      size="small"
+      *ngIf="!disablePrevBtn"
+      type="submit"
+      float-left
+      color="primary"
+      class="home-categories-prev"
+      (click)="prev()"
+    >
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </ion-button>
+    <ion-button
+      id="home-categories-next"
+      size="small"
+      *ngIf="!disableNextBtn"
+      type="submit"
+      float-right
+      color="primary"
+      class="home-categories-next"
+      (click)="next()"
+    >
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </ion-button>
+    <ion-slides
+      class="categories-slider"
+      #categorySlider
+      [options]="slideOpts"
+      (ionSlideWillChange)="arrowVisibility()"
+      (ionSlideDidChange)="arrowVisibility()"
+      (ionSlideReachEnd)="reachedEnd()"
+    >
+      <ion-slide>
+        <ion-button fill="outline" (click)="listAll()">
+          Todos
+        </ion-button>
+      </ion-slide>
+      <ion-slide *ngFor="let category of categories">
+        <ion-button fill="outline" (click)="listByCategory(category)">
+          {{category}}
+        </ion-button>
+      </ion-slide>
+    </ion-slides>
+  </div>
   <ion-grid>
-    <ion-row>
-      <ion-list>
-        <ion-button (click)="listByCategory('Periferico')"> Gabinetes </ion-button>
-      </ion-list>
-    </ion-row>
-
     <ion-row>
       <ion-col sizeLg="3" sizeMd="4" sizeXs="12" *ngFor="let product of products">
         <ion-card class="flip-card ion-text-center">

@@ -6,6 +6,39 @@ ion-grid {
   margin: 2em;
 }
 
+.home-categories-filter {
+  z-index: 9;
+  border-bottom: 1px solid #c3c3c3;
+  padding: 7px 0px;
+
+  .categories-slider {
+    height: auto !important;
+    padding: 5px;
+  }
+  .swiper-slide {
+    width: auto !important;
+  }
+}
+
+.swiper-wrapper {
+  padding: 2px;
+}
+
+.home-categories-prev {
+  position: absolute;
+  z-index: 99;
+  height: 35px;
+  padding-right: 1.3rem;
+}
+
+.home-categories-next {
+  position: absolute;
+  z-index: 30;
+  right: -6px;
+  height: 35px;
+  padding-left: 1.3rem;
+}
+
 .flip-card {
   margin: 10%;
   width: 100%;
