@@ -34,7 +34,7 @@ export class FeedComponent implements OnInit {
       this.getProductCategories();
     });
 
-    gsap.to('.button-category', {
+    gsap.from('.button-category', {
       duration: 2,
       scale: 0.9,
       opacity: 1,

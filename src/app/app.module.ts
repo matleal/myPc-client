@@ -15,7 +15,6 @@ import { ShellModule } from './shell/shell.module';
 import { SettingsModule } from './pages/settings/settings.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HeaderComponent } from './shell/header/header/header.component';
 
 @NgModule({
   imports: [

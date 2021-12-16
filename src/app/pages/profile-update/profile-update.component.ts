@@ -12,7 +12,12 @@ import { User } from '@app/@shared/models/user.model';
 })
 export class ProfileUpdateComponent implements OnInit {
   userForm!: FormGroup;
-  user!: User;
+  user: User = {
+    id: '',
+    password: '',
+    email: '',
+    name: '',
+  };
   userId: any;
 
   constructor(
@@ -51,7 +56,7 @@ export class ProfileUpdateComponent implements OnInit {
     console.log(this.userForm.value);
     this.userService.updateUser(this.userForm.value, this.userId).subscribe((user) => {
       this.toastService.showMessage('Informações atualizadas com sucesso!');
-      this.router.navigate(['/feed']);
+      this.router.navigate(['feed'], { replaceUrl: true });
     });
   }
 }

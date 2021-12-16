@@ -36,7 +36,7 @@
         <ion-button fill="solid" (click)="listAll()"> Todos </ion-button>
       </ion-slide>
       <ion-slide *ngFor="let category of categories">
-        <ion-button fill="solid" (click)="listByCategory(category)">
+        <ion-button class="button-category" fill="solid" (click)="listByCategory(category)">
           {{ category }}
         </ion-button>
       </ion-slide>
