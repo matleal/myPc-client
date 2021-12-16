@@ -1,13 +1,13 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="primary" class="ion-text-center">
     <ion-title>Anunciar Produto</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
   <ion-grid>
-    <ion-row>
-      <ion-col>
-        <div>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-sm="6" size-lg="6" size-xl="8">
+        <ion-card>
           <form [formGroup]="productForm">
             <ion-item lines="full">
               <ion-label position="floating">Produto</ion-label>
@@ -60,12 +60,11 @@
                 (click)="createProduct()"
                 [disabled]="!productForm.valid"
               >
-                <ion-icon name="logo-usd"></ion-icon>
                 Criar anúncio
               </ion-button>
             </ion-item>
           </form>
-        </div>
+        </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>

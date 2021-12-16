@@ -31,7 +31,7 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadForms()
+    this.loadForms();
     this.productCategories = this.productService.getCategories();
     this.image = '';
   }

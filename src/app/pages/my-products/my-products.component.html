@@ -1,21 +1,27 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="primary" class="ion-text-center">
     <ion-title>Meus Produtos</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let product of products">
-      <ion-thumbnail slot="start">
-        <img [src]="product.image" />
-      </ion-thumbnail>
-      <ion-label>{{ product.title }}</ion-label>
-      <ion-button (click)="navigateToUpdate(product._id)">
-        <ion-icon name="create-outline"></ion-icon>
-      </ion-button>
-      <ion-button color="danger" (click)="remove(product._id)">
-        <ion-icon name="trash-outline"></ion-icon>
-      </ion-button>
-    </ion-item>
-  </ion-list>
+  <ion-row class="ion-justify-content-center">
+    <ion-col size-sm="6" size-lg="6" size-xl="8">
+      <ion-card>
+        <ion-list>
+          <ion-item *ngFor="let product of products">
+            <ion-thumbnail slot="start">
+              <img [src]="product.image" />
+            </ion-thumbnail>
+            <ion-label>{{ product.title }}</ion-label>
+            <ion-button (click)="navigateToUpdate(product._id)">
+              <ion-icon name="create-outline"></ion-icon>
+            </ion-button>
+            <ion-button color="danger" (click)="remove(product._id)">
+              <ion-icon name="trash-outline"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 </ion-content>

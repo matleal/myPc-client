@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../auth/authentication.service';
 
 @Component({
   selector: 'app-shell',
@@ -6,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shell.component.scss'],
 })
 export class ShellComponent implements OnInit {
-  constructor() {}
+  constructor(private authenticationService: AuthenticationService, private router: Router) {}
 
   ngOnInit() {}
+
+  logout() {
+    this.authenticationService.logout().subscribe(() => this.router.navigate(['/login'], { replaceUrl: true }));
+  }
 }

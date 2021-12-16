@@ -1,20 +1,41 @@
-<ion-tabs>
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="feed">
-      <ion-icon name="storefront-outline"></ion-icon>
-      <ion-label translate>Feed</ion-label>
-    </ion-tab-button>
-    <ion-tab-button tab="product">
-      <ion-icon name="cash-outline"></ion-icon>
-      <ion-label translate>Anunciar</ion-label>
-    </ion-tab-button>
-    <ion-tab-button tab="myProducts">
-      <ion-icon name="person"></ion-icon>
-      <ion-label translate>Meus <br />Produtos</ion-label>
-    </ion-tab-button>
-    <ion-tab-button tab="settings">
-      <ion-icon name="cog"></ion-icon>
-      <ion-label translate>Configurações</ion-label>
-    </ion-tab-button>
-  </ion-tab-bar>
-</ion-tabs>
+<ion-menu side="start" contentId="main-content" type="overlay">
+  <ion-header>
+    <ion-toolbar translucent>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <div class="menu-div">
+      <ion-list>
+        <ion-menu-toggle>
+          <ion-item routerLink="/tabs/feed" [replaceUrl]="true" routerLinkActive="active">
+            <ion-icon name="cart" slot="start"></ion-icon>
+            <ion-label>Feed</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item routerLink="/tabs/product" [replaceUrl]="true" routerLinkActive="active">
+            <ion-icon name="pricetag" slot="start"></ion-icon>
+            <ion-label>Anunciar</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item routerLink="/tabs/myProducts" [replaceUrl]="true" routerLinkActive="active">
+            <ion-icon name="pricetags" slot="start"></ion-icon>
+            <ion-label>Meus produtos</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item routerLink="/login" [replaceUrl]="true" (onclick)="logout()">
+            <ion-icon name="log-out" slot="start"></ion-icon>
+            <ion-label>Deslogar</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </div>
+  </ion-content>
+</ion-menu>
+<app-header></app-header>
+<ion-content id="main-content">
+  <ion-router-outlet main></ion-router-outlet>
+</ion-content>

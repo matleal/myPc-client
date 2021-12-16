@@ -5,6 +5,7 @@ import { LoadingController, Platform } from '@ionic/angular';
 import { map } from 'rxjs/operators';
 import { forkJoin, from } from 'rxjs';
 import { finalize } from 'rxjs/operators';
+import gsap from 'gsap';
 
 import { environment } from '@env/environment';
 import { Logger, UntilDestroy, untilDestroyed } from '@shared';
@@ -35,7 +36,9 @@ export class LoginComponent implements OnInit {
     this.createForm();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    gsap.to('.login-logo', { duration: 1, y: -30, scale: 1.2 });
+  }
 
   async login() {
     this.isLoading = true;

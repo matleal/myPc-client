@@ -2,12 +2,14 @@
 //   text-align: center;
 // }
 
-ion-grid {
-  margin: 2em;
-}
-
 ion-img {
   width: 150px;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: auto;
 }
 
 .home-categories-filter {
@@ -47,7 +49,7 @@ ion-img {
   margin: 10%;
   width: 100%;
   height: 350px;
-  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  perspective: 1000px;
 }
 
 .flipper {
@@ -62,8 +64,14 @@ ion-img {
   transform: rotateY(180deg);
 }
 
-.front .product-img {
-  width: 18em;
+.front ion-img {
+  width: 80%;
+  height: 200px;
+}
+
+.title-row {
+  margin-top: 25px;
+  height: 50px;
 }
 
 h1 {
@@ -71,7 +79,6 @@ h1 {
   font-weight: medium;
   margin: 0.5em;
 }
-
 h2 {
   font-size: 25px;
   font-weight: bold;

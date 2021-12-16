@@ -4,6 +4,7 @@ import { Shell } from '@app/shell/shell.service';
 
 const routes: Routes = [
   Shell.childRoutes([
+    { path: '', redirectTo: 'tabs/feed', pathMatch: 'full' },
     { path: 'feed', loadChildren: () => import('./pages/feed/feed.module').then((m) => m.FeedModule) },
     {
       path: 'product',
@@ -16,6 +17,10 @@ const routes: Routes = [
     {
       path: 'updateProduct/:_id',
       loadChildren: () => import('./pages/update-product/update-product.module').then((m) => m.UpdateProductModule),
+    },
+    {
+      path: 'profileUpdate',
+      loadChildren: () => import('./pages/profile-update/profile-update.module').then((m) => m.ProfileUpdateModule),
     },
   ]),
   { path: 'register', loadChildren: () => import('./register/register.module').then((m) => m.RegisterModule) },

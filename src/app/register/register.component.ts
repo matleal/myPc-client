@@ -18,14 +18,14 @@ export class RegisterComponent implements OnInit {
     private registerService: RegisterService,
     private toastService: ToastService,
     private router: Router,
-    private fb: FormBuilder,
+    private fb: FormBuilder
   ) {}
 
   loadForms() {
     this.userForm = this.fb.group({
       email: ['', Validators.required, Validators.email],
       name: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
     });
   }
 

@@ -1,0 +1,30 @@
+<ion-content>
+  <ion-header>
+    <ion-toolbar color="primary" class="ion-text-center">
+      <ion-title>Editar Perfil</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-sm="6" size-lg="6" size-xl="8">
+        <ion-card>
+          <form [formGroup]="userForm">
+            <ion-item lines="full">
+              <ion-label position="floating">Email</ion-label>
+              <ion-input type="text" required formControlName="email"></ion-input>
+            </ion-item>
+            <ion-item lines="full">
+              <ion-label position="floating">Nome</ion-label>
+              <ion-input type="text" required formControlName="name"></ion-input>
+            </ion-item>
+            <ion-item class="button-container">
+              <ion-button class="update-button" color="primary" slot="end" size="default" (click)="updateUser()">
+                Editar Perfil
+              </ion-button>
+            </ion-item>
+          </form>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

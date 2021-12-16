@@ -3,7 +3,9 @@ ion-row {
   height: 100%;
 }
 
-.login-header,
+.login-header {
+  margin-top: 50px;
+}
 .login-background {
   color: var(--ion-color-primary-contrast);
 }
