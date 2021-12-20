@@ -6,7 +6,6 @@ import { map } from 'rxjs/operators';
 import { forkJoin, from } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import gsap from 'gsap';
-
 import { environment } from '@env/environment';
 import { Logger, UntilDestroy, untilDestroyed } from '@shared';
 import { AuthenticationService } from './authentication.service';
@@ -41,6 +40,7 @@ export class LoginComponent implements OnInit {
   }
 
   async login() {
+    this.error = '';
     this.isLoading = true;
     const login$ = this.authenticationService.login(this.loginForm.value);
     const loadingOverlay = await this.loadingController.create({});
@@ -55,17 +55,16 @@ export class LoginComponent implements OnInit {
         }),
         untilDestroyed(this)
       )
-      .subscribe(
-        (credentials) => {
+      .toPromise()
+      .then((credentials) => {
+        if (credentials.username === '' || credentials.token === '') {
+          this.error = 'Email ou senha estão incorretos';
+        } else {
+          console.log(credentials);
           log.debug(`${credentials.username} successfully logged in`);
           this.router.navigate([this.route.snapshot.queryParams.redirect || '/tabs/feed'], { replaceUrl: true });
-        },
-        (error) => {
-          log.debug(`Login error: ${error}`);
-          this.error = 'Email ou senha estão incorretos';
-          this.router.navigate(['/login'], { replaceUrl: true });
         }
-      );
+      });
   }
 
   get isWeb(): boolean {
@@ -74,8 +73,8 @@ export class LoginComponent implements OnInit {
 
   private createForm() {
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
+      username: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
       remember: true,
     });
   }

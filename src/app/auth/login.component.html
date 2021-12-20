@@ -9,7 +9,7 @@
         <div class="login-container">
           <form (ngSubmit)="login()" [formGroup]="loginForm" novalidate>
             <ion-text color="danger" [hidden]="!error || loginForm.dirty || isLoading">
-              <span class="ion-padding" translate>Usuario ou senha incorreto</span>
+              <span class="ion-padding" translate>{{ error }}</span>
             </ion-text>
             <ion-list>
               <ion-item lines="inset">
@@ -20,17 +20,22 @@
                 color="danger"
                 [hidden]="loginForm.controls.username.valid || loginForm.controls.username.untouched"
               >
-                <span class="ion-padding" translate>É necessario um email para logar</span>
+                <span class="ion-padding" translate>Insira um email valido</span>
               </ion-text>
               <ion-item lines="inset">
                 <ion-label color="medium" position="floating" translate>Senha</ion-label>
-                <ion-input type="password" formControlName="password" autocomplete="current-password"></ion-input>
+                <ion-input
+                  type="password"
+                  formControlName="password"
+                  autocomplete="current-password"
+                  (keyup.enter)="login()"
+                ></ion-input>
               </ion-item>
               <ion-text
                 color="danger"
                 [hidden]="loginForm.controls.password.valid || loginForm.controls.password.untouched"
               >
-                <span class="ion-padding" translate>É necessario uma senha para logar</span>
+                <span class="ion-padding" translate>Insira uma senha valida</span>
               </ion-text>
             </ion-list>
             <div class="ion-padding-horizontal">

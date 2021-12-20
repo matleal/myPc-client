@@ -14,21 +14,40 @@
               <ion-label color="medium" position="floating">Email</ion-label>
               <ion-input type="email" required formControlName="email"></ion-input>
             </ion-item>
+            <ion-text color="danger" [hidden]="userForm.controls.email.valid || userForm.controls.email.untouched">
+              <span class="ion-padding" translate>Insira um email valido</span>
+            </ion-text>
 
             <ion-item>
               <ion-label color="medium" position="floating">Nome</ion-label>
               <ion-input type="text" required formControlName="name"></ion-input>
             </ion-item>
+            <ion-text color="danger" [hidden]="userForm.controls.name.valid || userForm.controls.name.untouched">
+              <span class="ion-padding" translate>Seu nome é obrigatório</span>
+            </ion-text>
 
             <ion-item>
               <ion-label color="medium" position="floating">Senha</ion-label>
               <ion-input type="password" required formControlName="password"></ion-input>
             </ion-item>
+            <ion-text
+              color="danger"
+              [hidden]="userForm.controls.password.valid || userForm.controls.password.untouched"
+            >
+              <span class="ion-padding" translate>Insira uma senha com mais de 6 digitos</span>
+            </ion-text>
 
             <ion-item>
-              <ion-button slot="end" size="default" type="submit" color="secondary" (click)="createUser()"
-                >Cadastrar</ion-button
+              <ion-button
+                slot="end"
+                size="default"
+                type="submit"
+                color="secondary"
+                (click)="createUser()"
+                [disabled]="userForm.invalid"
               >
+                Cadastrar
+              </ion-button>
             </ion-item>
           </form>
         </ion-card>

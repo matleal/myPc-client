@@ -258,10 +258,10 @@
   resolved "https://registry.npmjs.org/@angular/language-service/-/language-service-12.1.5.tgz"
   integrity sha512-6yowaMEhiwXywzIFvdXZL1tkvJbfPdveYJG02mrcy53Evr+E+MY42YtK6iTj0WPWi1GiFJKNIrMon8Hy8WtgbA==
 
-"@angular/material@^13.0.2":
-  version "13.0.2"
-  resolved "https://registry.npmjs.org/@angular/material/-/material-13.0.2.tgz"
-  integrity sha512-DbbkQFpZ73oxOuR9LkkpeUPWP31DNIG3Z94sOrtdBhX3HfbLLOCaAJAIwMl8+bEuzDgtWBmx3taUR8l4WKCO8g==
+"@angular/material@^13.1.1":
+  version "13.1.1"
+  resolved "https://registry.yarnpkg.com/@angular/material/-/material-13.1.1.tgz#4d2d5a1ea6527b282beb26de6491eb3a221fab2a"
+  integrity sha512-kKWZBhnzuBYAVO1nrkqEaVTCJ2onEWs+tzAJDIlmbo9USiQyVCnFXx+rs86m4kRUxeAAZ9mcW5BGJr6oy5ClCA==
   dependencies:
     tslib "^2.3.0"
 
@@ -1509,6 +1509,11 @@
   dependencies:
     esquery "^1.0.1"
 
+"@pluritech/ion-mask@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@pluritech/ion-mask/-/ion-mask-1.2.0.tgz#d54dc403b4666b392d6d3949371f8a0c265bc7b1"
+  integrity sha512-WAi25ANvDPYVd/VGNGuCYTchB/ymtpXQF5IO+U3gk3K3eNhTiXBeT4gwa+cBgh9WuDQttCyOr0y2dRVHqs6Fuw==
+
 "@schematics/angular@12.1.4":
   version "12.1.4"
   resolved "https://registry.npmjs.org/@schematics/angular/-/angular-12.1.4.tgz"
@@ -1537,6 +1542,13 @@
   dependencies:
     remark "^13.0.0"
     unist-util-find-all-after "^3.0.2"
+
+"@thiagoprz/ionic-input-mask@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@thiagoprz/ionic-input-mask/-/ionic-input-mask-0.0.3.tgz#8406d8bc3fe031cbfb6c74f0bc54f84032fb8527"
+  integrity sha512-8oCpGYOLN9t8AvwcgvYAbnOcA4MUC7JueaBcOmS7ygkFk6wl5nGdoHnsVvnRsKo8+4gMJLnAMCUtr/vABy8kGg==
+  dependencies:
+    tslib "^2.0.0"
 
 "@tootallnate/once@1":
   version "1.1.2"
@@ -7298,6 +7310,13 @@ neo-async@^2.6.2:
   version "2.6.2"
   resolved "https://registry.npmjs.org/neo-async/-/neo-async-2.6.2.tgz"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
+
+ngx-mask-ionic@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/ngx-mask-ionic/-/ngx-mask-ionic-1.1.2.tgz#8b2afc81cef0bd3cd3d9fdb852f92181babed2c3"
+  integrity sha512-1iuJW3BWhrRqcsMvq2gw3DrC1iCZh9VPAM4PFnQvwm34vwzB580v2qWlxXtN3vA08q7XxgftAFI2uKV5P3TKNQ==
+  dependencies:
+    tslib "^1.9.0"
 
 ngx-mask@^13.0.1:
   version "13.0.1"
